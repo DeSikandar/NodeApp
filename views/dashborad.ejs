@@ -1,0 +1,51 @@
+<h1 class="mt-4">Dashbaord</h1>
+<p class="lead mb-3">Welcome <%= us.name %></p>
+<a href="/user/logout" class="btn btn-secondary">Logout</a>
+
+<% include ./parser/message %>
+<div class="container mt-4">
+    <table class="table">
+        <a href="/user/adduser" class="btn btn-secondary">Add user</a>
+        <thead class="bg-white">
+          <tr>
+            <th scope="col">#</th>
+            <th>Photo</th>
+            <th scope="col">name</th>
+            <th scope="col">email</th>
+            <th scope="col">Date</th>
+            
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% let i=1; %>
+        <% emp.forEach((emp)=>{%>
+           
+      
+            <tr>
+            <th scope="row"><%= i %></th>
+            <th><img src="uploads/<%= emp.photo %>" class="img-thumbnail" /></th>
+            <td><%= emp.name %></td>
+            <td><%= emp.email %></td>
+            <td><%= emp.date.toDateString() %></td>
+            
+            <td><a href="/user/edit/<%=emp._id %>" class="btn btn-info">Edit</a>|<a href="/user/delete/<%=emp._id%>" class="btn btn-danger">Delete</a></td>    
+        </tr>
+          <% 
+            i++;
+            }) %>
+        
+        </tbody>
+        <tfoot class="bg-white">
+            <tr>
+                <th scope="col">#</th>
+                <th>Photo</th>
+                <th scope="col">name</th>
+                <th scope="col">email</th>
+                <th scope="col">Date</th>
+              
+                <th></th>
+              </tr>
+        </tfoot>
+      </table>
+</div>
